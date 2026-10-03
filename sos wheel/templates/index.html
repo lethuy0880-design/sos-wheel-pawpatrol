@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#024BB0">
+  <title>SOS Wheel | Cứu hộ xe 24/7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/rebrand.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SOS Wheel trang chủ"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 72"><path class="logo-shield-edge" d="M32 3 58 13v23c0 15-10 25-26 33C16 61 6 51 6 36V13L32 3Z"/><path class="logo-shield-face" d="M32 9 52 17v19c0 12-8 20-20 27C20 56 12 48 12 36V17l20-8Z"/><path class="logo-star" d="m32 17 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1 4-9Z"/><circle class="logo-wheel" cx="32" cy="36" r="8"/><circle class="logo-wheel-core" cx="32" cy="36" r="3"/></svg></span><span>SOS<span class="brand-light"> Wheel</span><small>ROAD ASSISTANCE · 24/7</small></span></a>
+    <div class="topbar-right"><span class="live-dot"></span><span class="live-label">Đang hoạt động</span><button class="text-button" id="open-portal">Dành cho đối tác <span aria-hidden="true">↗</span></button></div>
+  </header>
+
+  <main class="app-shell" id="customer-view">
+    <section class="main-column">
+      <div class="eyebrow"><span class="eyebrow-line"></span> ĐỘI CÚN SOS · CỨU HỘ 24/7</div>
+      <h1>Gâu gâu!<br><span>Đội cứu hộ đã sẵn sàng.</span></h1>
+      <p class="intro">Báo sự cố trong vài giây. Biết giá trước, theo dõi thợ đến tận nơi.</p>
+      <button class="emergency-fast-track" id="emergency-fast-track" type="button"><span class="fast-track-bolt">⚡</span><span class="fast-track-copy"><strong>CỨU HỘ KHẨN CẤP</strong><small>Gọi thợ ngay trong 30s</small></span><span class="fast-track-arrow">→</span></button>
+      <p class="fast-track-note">Ưu tiên kết nối thợ gần nhất; thời gian phản hồi phụ thuộc tình trạng thợ trong khu vực.</p>
+
+      <div class="welcome-banner"><div class="lookout-tower" aria-hidden="true"><span class="tower-flag">★</span><span class="tower-window">🐾</span><span class="tower-base"></span></div><div class="welcome-copy"><span class="welcome-kicker">TRUNG TÂM ĐIỀU PHỐI</span><strong>Biệt đội cún SOS xuất phát!</strong><span>Cùng bạn vượt qua mọi sự cố trên đường.</span></div><span class="welcome-paw" aria-hidden="true">🐾</span></div>
+
+      <div class="location-strip"><div class="location-icon">⌖</div><div class="location-copy"><strong id="location-title">Chưa bật định vị</strong><span id="location-subtitle">Cho phép vị trí để tìm thợ gần nhất</span></div><button class="location-button" id="locate-button">Bật định vị <span>→</span></button></div>
+
+      <section class="issue-section" aria-labelledby="issue-title">
+        <div class="section-heading"><div><span class="section-index">01 / SỰ CỐ</span><h2 id="issue-title">Xe của bạn đang gặp gì?</h2></div><button id="wizard-button" class="quiet-button">Chưa rõ? Chẩn đoán <span>↗</span></button></div>
+        <div class="issue-grid" id="issue-list">
+          <button class="issue-option" data-group="Xăng" data-code="fuel"><span class="issue-glyph fuel-glyph"><svg class="dog-avatar" viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg><small>ZIPPY</small></span><span><strong>Hết xăng</strong><small>Tiếp nhiên liệu</small></span></button>
+          <button class="issue-option" data-group="Lốp" data-code="tire_patch"><span class="issue-glyph tire-glyph"><svg class="dog-avatar" viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg><small>NHANH NHẸN</small></span><span><strong>Thủng lốp</strong><small>Vá hoặc thay ruột</small></span></button>
+          <button class="issue-option" data-group="Bình điện" data-code="battery_jump"><span class="issue-glyph battery-glyph"><svg class="dog-avatar" viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg><small>ĐIỆN LỰC</small></span><span><strong>Hết bình</strong><small>Kích hoặc thay bình</small></span></button>
+          <button class="issue-option" data-group="Xích" data-code="chain_adjust"><span class="issue-glyph chain-glyph"><svg class="dog-avatar" viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg><small>THỢ GIỎI</small></span><span><strong>Xích / truyền động</strong><small>Chỉnh hoặc kiểm tra</small></span></button>
+          <button class="issue-option" data-group="Chưa rõ" data-code="diagnose"><span class="issue-glyph rescue-glyph"><svg class="dog-avatar" viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg><small>ĐỘI TRƯỞNG</small></span><span><strong>Chưa rõ nguyên nhân</strong><small>Kiểm tra và chẩn đoán</small></span></button>
+        </div>
+        <div class="wizard-panel hidden" id="wizard-panel"><div class="wizard-top"><span class="section-index">CHẨN ĐOÁN NHANH · <span id="wizard-step-label">1 / 2</span></span><button class="icon-button" id="wizard-close" aria-label="Đóng">×</button></div><h3 id="wizard-question"></h3><div class="answer-row"><button class="answer-button" data-answer="yes">Có</button><button class="answer-button" data-answer="no">Không</button><button class="answer-button" data-answer="unsure">Không chắc</button></div></div>
+      </section>
+
+      <section class="quote-section" id="quote-section"><div class="section-heading"><div><span class="section-index">02 / ƯỚC TÍNH</span><h2>Chi phí minh bạch</h2></div><span class="estimate-caption">Giá dự kiến · chưa gồm phát sinh</span></div><div id="quote-content" class="quote-empty">Chọn sự cố và bật định vị để xem ước tính.</div></section>
+
+      <section class="mechanic-section"><div class="section-heading"><div><span class="section-index">03 / ĐỘI CỨU HỘ</span><h2>Thợ gần bạn</h2></div><span class="nearby-count" id="nearby-count">Đang chờ vị trí</span></div><div class="mechanic-list" id="mechanic-list"><div class="empty-state">Bật định vị để xem các thợ đang sẵn sàng.</div></div></section>
+      <button class="fuel-link" id="fuel-search"><span class="fuel-link-icon">⌖</span><span><strong>Tìm cây xăng gần nhất</strong><small>Mở bản đồ các trạm xăng xung quanh bạn</small></span><span class="fuel-arrow">↗</span></button>
+    </section>
+
+    <aside class="map-column"><div class="map-topline"><div><span class="map-kicker">BẢN ĐỒ TRỰC TIẾP</span><strong id="map-status">Đang chờ vị trí của bạn</strong></div><span class="map-live"><i></i> LIVE</span></div><div class="active-workers-badge" id="active-workers-badge" aria-live="polite"><span class="workers-pulse"></span><strong id="active-worker-count">Đang chờ vị trí</strong><span id="active-worker-copy">thợ cứu hộ sẵn sàng 24/7</span></div><div id="map"></div><div class="map-legend"><span><i class="legend-customer"></i> Vị trí của bạn</span><span><i class="legend-mechanic"></i> Thợ sẵn sàng</span></div><div class="map-note"><span>◎</span><span id="radius-note">Vị trí chỉ được sử dụng để kết nối cứu hộ trong khu vực 200 km.</span></div>
+      <div class="safety-card hidden" id="active-order"><div class="order-head"><span class="order-pulse"></span><span>ĐƠN CỨU HỘ</span><strong id="order-status">Đang tìm thợ</strong></div><div class="moving-mascot hidden" id="order-mascot"><span class="moving-mascot-paw">🐾</span><span class="mascot-trail"></span><span class="mascot-caption">Biệt đội đang lên đường!</span></div><div class="order-number" id="order-number"></div><div class="order-details" id="order-details"></div><button class="share-button" id="share-button">↗ <span>Chia sẻ hành trình an toàn</span></button><div id="review-area" class="review-area hidden"></div></div>
+    </aside>
+  </main>
+
+  <main class="portal-shell hidden" id="portal-view"><div class="portal-header"><button class="back-button" id="back-home">← Quay lại cứu hộ</button><div class="portal-tabs"><button class="portal-tab active" data-portal="mechanic">Đối tác cứu hộ</button><button class="portal-tab" data-portal="admin">Quản trị viên</button></div></div><section id="mechanic-portal" class="portal-content"><div class="portal-title"><span class="section-index">SOS WHEEL · PARTNER</span><h1>Trung tâm đối tác</h1><p>Nhận cuốc cứu hộ phù hợp, ngay trong khu vực của bạn.</p></div><div id="mechanic-auth" class="auth-layout"><form id="mechanic-login-form" class="auth-form"><h2>Đăng nhập thợ</h2><label>Số điện thoại<input name="phone" autocomplete="tel" required></label><label>Mật khẩu<input name="password" type="password" autocomplete="current-password" required></label><button class="primary-button" type="submit">Đăng nhập <span>→</span></button><p class="form-message" id="mechanic-login-message"></p></form><form id="mechanic-register-form" class="auth-form register-form"><h2>Đăng ký đối tác</h2><label>Họ và tên<input name="name" autocomplete="name" required minlength="2"></label><label>Số điện thoại<input name="phone" autocomplete="tel" required></label><label>Mật khẩu <small>(tối thiểu 8 ký tự)</small><input name="password" type="password" required minlength="8"></label><button class="outline-button" type="submit">Gửi hồ sơ đăng ký</button><p class="form-message" id="mechanic-register-message"></p></form></div><div id="mechanic-dashboard" class="dashboard hidden"></div></section><section id="admin-portal" class="portal-content hidden"><div class="portal-title"><span class="section-index">SOS WHEEL · OPERATIONS</span><h1>Bàn điều hành</h1><p>Quản lý đối tác và theo dõi chất lượng cứu hộ.</p></div><form id="admin-login-form" class="admin-login"><label>Tên đăng nhập<input name="username" autocomplete="username" required></label><label>Mật khẩu<input name="password" type="password" autocomplete="current-password" required></label><button class="primary-button" type="submit">Đăng nhập <span>→</span></button><p class="form-message" id="admin-login-message"></p></form><div id="admin-dashboard" class="dashboard hidden"></div></section></main>
+
+  <div class="modal-backdrop hidden" id="request-modal"><form class="modal-card" id="request-form"><button type="button" class="modal-close" data-close-modal aria-label="Đóng">×</button><span class="section-index">XÁC NHẬN CỨU HỘ</span><h2>Thợ sẵn sàng lên đường.</h2><p id="request-mechanic-name" class="modal-copy"></p><label>Số điện thoại liên hệ<input name="customer_phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx" required minlength="8"></label><div class="consent-note">Khi gửi yêu cầu, vị trí của bạn sẽ được chia sẻ riêng với thợ đã chọn.</div><button class="primary-button" type="submit">Gọi cứu hộ <span>→</span></button><p class="form-message" id="request-message"></p></form></div>
+  <aside class="support-widget" id="support-widget" aria-label="Trợ lý hỗ trợ SOS">
+    <div class="support-tooltip" id="support-tooltip">Gâu! Cần trợ giúp gấp? Bấm vào đây! <span>Trợ lý Cún SOS 24/7 🐾</span></div>
+    <section class="support-panel hidden" id="support-panel" role="dialog" aria-labelledby="support-title" aria-modal="false">
+      <header class="support-panel-head"><span class="support-mini-avatar" aria-hidden="true">🐾</span><div><strong id="support-title">Trợ lý Cún SOS</strong><small><i></i> Hướng dẫn nhanh · 24/7</small></div><button class="support-close" id="support-close" type="button" aria-label="Đóng hỗ trợ">×</button></header>
+      <div class="support-panel-content">
+        <p class="support-greeting">Gâu gâu! Mình là Trợ lý Cứu hộ SOS. Bạn cần liên hệ Hotline 1900-XXXX hay gửi hỗ trợ trực tiếp?</p>
+        <div class="support-actions" id="support-actions"><a class="support-action support-call" href="tel:1900XXXX"><span class="support-action-icon">☎</span><span><strong>Gọi ngay</strong><small>Hotline 1900-XXXX</small></span><span class="support-action-arrow">→</span></a><button class="support-action support-chat-open" id="support-chat-open" type="button"><span class="support-action-icon">✉</span><span><strong>Chat hỗ trợ</strong><small>Nhận gợi ý chọn sự cố</small></span><span class="support-action-arrow">→</span></button></div>
+        <div class="support-chat hidden" id="support-chat"><div class="support-messages" id="support-messages" aria-live="polite"><p class="chat-message assistant-message">Mình có thể hướng dẫn nhanh. Xe của bạn đang gặp vấn đề gì?</p></div><form class="support-chat-form" id="support-chat-form"><input id="support-chat-input" name="message" maxlength="240" autocomplete="off" placeholder="Mô tả sự cố..." aria-label="Mô tả sự cố" required><button type="submit" aria-label="Gửi tin nhắn">↑</button></form><small class="support-chat-note">Trợ lý tự động · Cần cứu hộ ngay? Hãy gửi yêu cầu trên trang.</small></div>
+      </div>
+    </section>
+    <button class="support-fab" id="support-fab" type="button" aria-label="Mở Trợ lý Cún SOS" aria-expanded="false" aria-controls="support-panel">
+      <svg class="support-dog" viewBox="0 0 100 100" role="img" aria-label="Chó cứu hộ SOS đeo tai nghe tổng đài">
+        <path class="support-ear" d="M28 37Q13 25 17 51q3 15 17 14m32-28q15-12 11 14-3 15-17 14"/>
+        <path class="support-face" d="M27 41q0-28 23-28t23 28v18q0 25-23 29-23-4-23-29Z"/>
+        <path class="support-cap" d="M25 38q1-29 25-29t25 29H63q-4-13-13-13T37 38Z"/>
+        <path class="support-headset" d="M22 47V39q0-31 28-31t28 31v8"/>
+        <rect class="support-earcup" x="17" y="43" width="13" height="22" rx="6"/><rect class="support-earcup" x="70" y="43" width="13" height="22" rx="6"/>
+        <ellipse class="support-muzzle" cx="50" cy="62" rx="18" ry="13"/><circle class="support-eye" cx="41" cy="48" r="3"/><circle class="support-eye" cx="59" cy="48" r="3"/><path class="support-nose" d="M45 57q5-6 10 0-1 6-5 6t-5-6Z"/><path class="support-smile" d="M50 63v4m0 0q-5 5-9 0m9 0q5 5 9 0"/>
+        <path class="support-mic-arm" d="M77 63q1 15-14 15h-7"/><circle class="support-mic" cx="55" cy="78" r="4"/>
+        <path class="support-bandana" d="m38 82 12 7 12-7-3 13H41Z"/>
+      </svg><span class="support-fab-ping"></span>
+    </button>
+  </aside>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>window.SOS_SHARE_TOKEN = {{ share_token|default('')|tojson }};</script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
