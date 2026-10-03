@@ -8,7 +8,7 @@
   <title>SOS Wheel | Cứu hộ xe 24/7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900;1000&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@400;600;700;800;900;1000&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <style>
@@ -39,6 +39,11 @@
     .section-index,.step-label,.map-kicker{font-size:11px;font-weight:900;letter-spacing:.7px}
     .support-tooltip{font-weight:900;letter-spacing:.1px}
     @media(max-width:700px){body h1{font-size:clamp(35px,9vw,43px)}.section-head h2{font-size:19px}.fast-copy strong{font-size:15px}.welcome-copy strong{font-size:15px}.badge-copy strong{font-size:11px}.section-index,.step-label,.map-kicker{font-size:10px}}
+    .brand-mark svg,.badge svg,.support-dog{display:block;flex:none;max-width:100%;height:auto}
+    .brand-mark svg{width:36px;height:41px}
+    .badge svg{width:36px;height:36px}
+    .support-dog{width:61px;height:61px}
+    @media(max-width:700px){.badge svg{width:32px;height:32px}.support-dog{width:53px;height:53px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
