@@ -38,19 +38,85 @@
     .badge small{font-family:var(--round-font);font-size:7px;font-weight:900;letter-spacing:.2px}
     .section-index,.step-label,.map-kicker{font-size:11px;font-weight:900;letter-spacing:.7px}
     .support-tooltip{font-weight:900;letter-spacing:.1px}
+    .diagnostic-pill{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex:0 0 auto;padding:9px 14px;border:3px solid var(--navy);border-radius:999px;background:linear-gradient(115deg,#ffc800 0%,#ff9c20 48%,#f45a28 100%);box-shadow:0 4px 0 var(--navy),0 6px 12px #0d2b6824;color:#fff;font-family:var(--round-font);font-size:12px;font-weight:900;line-height:1.1;white-space:nowrap;text-shadow:0 1px 1px #9e3d12;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+    .diagnostic-pill:hover{transform:scale(1.05);box-shadow:0 6px 0 var(--navy),0 9px 15px #0d2b6830;filter:saturate(1.12)}
+    .diagnostic-pill:active{transform:translateY(3px) scale(.99);box-shadow:0 1px 0 var(--navy)}
+    .diagnostic-pill svg{display:block;width:17px;height:17px;flex:0 0 17px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .diagnostic-pill{background:linear-gradient(115deg,#c96a08 0%,#e65b16 52%,#c93b20 100%);text-shadow:none}
+    .diagnostic-pill:hover{background:linear-gradient(115deg,#b95e05 0%,#d84b10 52%,#b83219 100%)}
+    .issue-card{position:relative}
+    .issue-card.selected,.issue-card.selected:hover{transform:translateY(4px);border-color:#2563eb;background:#e0f2fe;box-shadow:inset 0 4px 10px #0c4a6e20,0 2px 0 var(--navy)}
+    .issue-card.selected:after{content:'✓';position:absolute;top:8px;right:9px;width:21px;height:21px;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:#16a34a;box-shadow:0 2px 4px #0d2b6833;color:#fff;font-size:12px;font-weight:900;line-height:1}
     @media(max-width:700px){body h1{font-size:clamp(35px,9vw,43px)}.section-head h2{font-size:19px}.fast-copy strong{font-size:15px}.welcome-copy strong{font-size:15px}.badge-copy strong{font-size:11px}.section-index,.step-label,.map-kicker{font-size:10px}}
+    @media(max-width:430px){.section-head{align-items:center}.diagnostic-pill{gap:5px;padding:8px 10px;font-size:10px}.diagnostic-pill svg{width:15px;height:15px;flex-basis:15px}}
     .brand-mark svg,.badge svg,.support-dog{display:block;flex:none;max-width:100%;height:auto}
     .brand-mark svg{width:36px;height:41px}
     .badge svg{width:36px;height:36px}
     .support-dog{width:61px;height:61px}
     @media(max-width:700px){.badge svg{width:32px;height:32px}.support-dog{width:53px;height:53px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+    /* Warm, playful polish. Keep this block after Tailwind and the base theme. */
+    body{font-size:15px;background-image:radial-gradient(ellipse 110px 32px at 9% 13%,#ffffffbd 0 48%,transparent 74%),radial-gradient(ellipse 130px 38px at 15% 12%,#ffffffa8 0 45%,transparent 74%),radial-gradient(ellipse 105px 32px at 91% 34%,#ffffffa8 0 48%,transparent 74%),radial-gradient(circle,#0d2b6810 1px,transparent 1.6px),linear-gradient(180deg,#e0f2fe 0%,#f0f9ff 35%,#fef3c7 70%,#fff1f2 100%);background-size:100% 100%,100% 100%,100% 100%,28px 28px,100% 100%;background-attachment:fixed}
+    body:before,body:after{position:fixed;z-index:0;pointer-events:none;opacity:.13;line-height:1}
+    body:before{content:'✦  ✧';top:24%;left:2.5%;color:#e59a12;font-size:27px;transform:rotate(-12deg)}
+    body:after{content:'🐾';right:2.5%;bottom:24%;font-size:31px;transform:rotate(16deg)}
+    .topbar,.shell,.support,.modal-backdrop,.toast{z-index:1}.shell{position:relative}
+    .topbar{z-index:50}.support{z-index:100}.modal-backdrop{z-index:150}.toast{z-index:200}
+    .topbar,.welcome,.location-box,.issue-card,.wizard,.quote-card,.mechanic-row,.fuel-link,.map-panel,.order-card,.support-panel,.modal{border-radius:25px}
+    .topbar{border-radius:0 0 18px 18px}.brand-mark{border-radius:17px 17px 20px 8px}
+    .welcome,.location-box,.issue-card,.wizard,.quote-card,.mechanic-row,.fuel-link,.map-panel,.order-card,.support-panel,.modal{box-shadow:0 5px 0 #0d2b6820,0 10px 20px #0d2b6810,inset 0 2px 0 #ffffffb8}
+    .issue-card{min-height:104px;position:relative;border-radius:22px;transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+    .issue-card:hover:not(.selected){transform:translateY(-3px);box-shadow:0 7px 0 #0d2b6828,0 12px 20px #0d2b6818,inset 0 2px 0 #fff}
+    .issue-card.bounce{animation:card-wiggle .46s ease}
+    .badge{width:78px;height:82px;flex:0 0 78px;border-radius:20px 20px 23px 8px}
+    .badge svg{width:45px;height:45px}.badge small{font-size:12px!important;line-height:1.05;letter-spacing:0;white-space:nowrap}
+    .badge-copy{min-width:0;padding-right:22px}.badge-copy strong{font-size:15px;line-height:1.15}.badge-copy small{font-size:12px!important;line-height:1.2}
+    .badge-pink,.badge-green,.badge-blue,.badge-yellow,.badge-red{box-shadow:inset 0 3px 0 #ffffff9c,0 4px 0 #0d2b6824}
+    .fast-track,.diagnostic-pill,.loc-btn,.demo-btn,.answer-btn,.call-btn,.primary-btn,.support-action,.share-btn,.fuel-link{min-height:44px;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+    .fast-track:hover,.loc-btn:hover,.demo-btn:hover,.diagnostic-pill:hover,.answer-btn:hover,.call-btn:hover,.primary-btn:hover,.support-action:hover,.share-btn:hover,.fuel-link:hover{filter:saturate(1.08);animation:button-bounce .34s ease}
+    .fast-track:active,.loc-btn:active,.demo-btn:active,.diagnostic-pill:active,.answer-btn:active,.call-btn:active,.primary-btn:active,.support-action:active,.share-btn:active,.fuel-link:active{transform:translateY(3px) scale(.99)}
+    .section-head h2{font-size:22px;line-height:1.2}.section-index,.step-label,.map-kicker,.eyebrow{font-size:12px!important;letter-spacing:.45px}
+    .intro,.brand small,.support-tooltip small,.loc-copy small,.fast-copy small,.fast-note,.welcome-copy small,.welcome-copy span,.section-head>small,.quiet-btn,.diagnostic-pill,.wizard-top,.answer-btn,.quote-empty,.price-label,.travel,.mechanic-copy small,.distance,.call-btn,.empty-state,.fuel-link small,.map-live,.workers,.map-legend,.map-note,.order-head,.order-info,.share-btn,.moving small,.support-tooltip,.support-panel,.bubble,.support-action,.chat-note,.modal p,.modal label,.toast{font-size:12px!important}
+    .fast-copy strong{font-size:18px}.welcome-copy strong{font-size:19px}.loc-btn,.demo-btn,.call-btn,.answer-btn,.primary-btn,.share-btn{padding:11px 14px;font-size:13px!important}
+    .map-pup{border-radius:14px 14px 16px 6px;box-shadow:0 4px 0 #0d2b6822,0 7px 12px #0d2b681c}.support-panel{border-radius:22px}.support-tooltip{border-radius:17px 17px 6px 17px}
+    .dog-eye,#support-fab .support-dog circle:nth-of-type(-n+2){transform-box:fill-box;transform-origin:center;animation:mascot-blink 5.8s ease-in-out infinite}.dog-eye:nth-of-type(2),#support-fab .support-dog circle:nth-of-type(2){animation-delay:.12s}.support-cheek{fill:#ff7d96;opacity:.8}.support-tongue{transform-box:fill-box;transform-origin:top center;animation:tongue-peek 3s ease-in-out infinite}.support-ear-left,.support-ear-right{transform-box:fill-box;transform-origin:50% 100%;animation:ear-twitch 4.2s ease-in-out infinite}.support-ear-right{animation-delay:.5s}
+    .support-fab{isolation:isolate}.support-fab:after{content:'';position:absolute;z-index:1;left:-5px;bottom:13px;width:17px;height:17px;border:4px solid var(--yellow);border-right:0;border-bottom:0;border-radius:100% 0 0 0;filter:drop-shadow(1px 1px 0 var(--navy));transform-origin:right center;animation:tail-wag .48s ease-in-out infinite alternate}.support-dog{position:relative;z-index:2}.support-fab i{position:relative;z-index:3}
+    @keyframes button-bounce{0%,100%{transform:translateY(0) scale(1)}38%{transform:translateY(-3px) scale(1.025)}68%{transform:translateY(1px) scale(.995)}}
+    @keyframes card-wiggle{0%,100%{rotate:0deg}25%{rotate:-1.2deg}55%{rotate:1deg}78%{rotate:-.4deg}}
+    @keyframes mascot-blink{0%,91%,94%,100%{transform:scaleY(1)}92.5%{transform:scaleY(.12)}}
+    @keyframes tail-wag{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
+    @keyframes tongue-peek{0%,76%,100%{transform:scaleY(.5)}82%,94%{transform:scaleY(1)}}
+    .mascot-dog{display:block;overflow:visible}.dog-eye-white{fill:#fff;stroke:#0d2b68;stroke-width:.7}.dog-eye{fill:#14294a}.dog-highlight{fill:#fff;stroke:#fff;stroke-width:.4}.dog-cheek{fill:#ff7d96;opacity:.7}.dog-brow{fill:none;stroke:#70472f;stroke-width:1.8;stroke-linecap:round}.dog-mouth-smile,.dog-mouth-worried{fill:none;stroke:#273348;stroke-width:1.8;stroke-linecap:round}.dog-mouth-worried,.dog-tongue,.dog-sweat{display:none}.dog-tongue{fill:#f05c79;stroke:#bb314f;stroke-width:.8}.dog-sweat{fill:#7ad8ff;stroke:#fff;stroke-width:.8}.mood-worried .dog-mouth-smile{display:none}.mood-worried .dog-mouth-worried,.mood-worried .dog-sweat{display:block}.mood-worried .dog-brow{stroke:#9a4d40}.mood-happy .dog-tongue{display:block}.mood-happy .dog-cheek{opacity:.9}.mood-brave .dog-brow{stroke:#174f80;stroke-width:2}.mood-confident .dog-mouth-smile{stroke-width:2.2}.mood-curious .dog-brow{stroke:#9a4d40;stroke-width:1.6}.dog-ear-left,.dog-ear-right{transform-box:fill-box;transform-origin:50% 100%;animation:ear-twitch 4.2s ease-in-out infinite}.dog-ear-right{animation-delay:.5s}.mood-worried .dog-ear-left,.mood-worried .dog-ear-right{animation-duration:2.8s}.moving-mascot .mascot-dog{width:30px;height:30px}
+    @keyframes ear-twitch{0%,78%,100%{transform:rotate(0)}84%{transform:rotate(-7deg)}90%{transform:rotate(4deg)}}
+    @media(max-width:700px){.shell{gap:24px}.section-head h2{font-size:20px}.issue-grid{gap:10px}.issue-card{min-height:102px;padding:9px 8px;gap:7px}.badge{width:74px;height:78px;flex:0 0 74px}.badge svg{width:39px;height:39px}.badge small{font-size:12px!important}.badge-copy{padding-right:19px}.badge-copy strong{font-size:13px}.badge-copy small{font-size:12px!important}.loc-actions{gap:8px}.loc-btn,.demo-btn{min-height:44px;padding:9px 10px;font-size:12px!important}.support{right:15px;bottom:17px}}
+    @media(max-width:390px){.section-head h2{font-size:18px}.section-head{gap:7px}.issue-grid{grid-template-columns:1fr}.issue-card{min-height:96px;padding:9px 12px}.badge{width:74px;height:78px;flex:0 0 74px}.badge svg{width:39px;height:39px}.badge small{font-size:12px!important}.badge-copy{padding-right:23px}.badge-copy strong{font-size:14px}.badge-copy small{font-size:12px!important}.diagnostic-pill{min-height:44px;padding:9px 10px;font-size:12px!important}}
+    .top-actions{gap:9px}.sound-toggle{min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 9px;border:2px solid #ffc800;border-radius:14px;background:linear-gradient(180deg,#1e80df,#0753ad);box-shadow:0 3px 0 #0d2b68,inset 0 2px 0 #ffffff80;color:#fff;font:800 12px var(--font);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.sound-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.sound-toggle .speaker-muted{display:block}.sound-toggle .speaker-wave{display:none}.sound-toggle[aria-pressed="true"]{background:linear-gradient(180deg,#45a95a,#287b32)}.sound-toggle[aria-pressed="true"] .speaker-muted{display:none}.sound-toggle[aria-pressed="true"] .speaker-wave{display:block}
+    .issue-card,.fast-track,.loc-btn,.demo-btn,.diagnostic-pill,.answer-btn,.call-btn,.primary-btn,.support-action,.share-btn,.fuel-link{position:relative;isolation:isolate;overflow:hidden;transition:transform .2s cubic-bezier(.2,.75,.25,1),box-shadow .2s ease,filter .2s ease}
+    .issue-card:before,.fast-track:before,.loc-btn:before,.demo-btn:before,.diagnostic-pill:before,.answer-btn:before,.call-btn:before,.primary-btn:before,.support-action:before,.share-btn:before,.fuel-link:before{content:'';position:absolute;z-index:-1;inset:2px 3px auto;height:48%;border-radius:inherit;background:linear-gradient(180deg,#ffffffb8 0%,#ffffff48 48%,#ffffff00 100%);pointer-events:none}
+    .issue-card:active,.fast-track:active,.loc-btn:active,.demo-btn:active,.diagnostic-pill:active,.answer-btn:active,.call-btn:active,.primary-btn:active,.support-action:active,.share-btn:active,.fuel-link:active{transform:translateY(4px) scale(.975);box-shadow:0 1px 0 #0d2b68,inset 0 3px 8px #0d2b6828;filter:saturate(1.05)}
+    .issue-card.selected:before{opacity:.4}.issue-card.selected:after{z-index:3}.support-fab:active{transform:translateY(4px) scale(.96)}
+    @media(max-width:700px){.top-actions{gap:6px}.sound-toggle{width:40px;height:40px;padding:7px;border-radius:13px}.sound-toggle #sound-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}}
+    .badge{display:grid;place-items:center;width:70px;height:70px;flex:0 0 70px;padding:2px;border-radius:22px 22px 25px 9px}.badge svg,.badge .mascot-dog{display:block;width:60px;height:60px;max-width:none}.badge>small{display:none!important}
+    .mascot-dog{overflow:visible}.mascot-dog .dog-ear{fill:var(--dog,#f5a8c8);stroke:var(--navy);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}.dog-ear-inner{fill:#ffb7ca;stroke:#d87894;stroke-width:.8;stroke-linejoin:round}.dog-face{fill:#fff7ed;stroke:var(--navy);stroke-width:1.8;stroke-linejoin:round}.dog-muzzle{fill:#fff;stroke:#efcfbb;stroke-width:.8}.dog-eye-white{fill:#fff}.dog-eye{fill:#101b31;stroke:#0d2b68;stroke-width:.7}.dog-highlight{fill:#fff;stroke:none}.dog-cheek{fill:#ff93a8;opacity:.56}.dog-nose{fill:#25324a;stroke:#0d2b68;stroke-width:.65}.dog-nose-highlight{fill:#fff;opacity:.9}.dog-brow{fill:none;stroke:#70472f;stroke-width:1.5;stroke-linecap:round}.dog-mouth-omega,.dog-mouth-worried{fill:none;stroke:#6b3f3a;stroke-width:1.5;stroke-linecap:round}.dog-mouth-worried{display:none}.dog-tongue{display:none;fill:#f36c86;stroke:#c84561;stroke-width:.7}.dog-sweat{display:none;fill:#94e3ff;stroke:#fff;stroke-width:.7}
+    .mood-worried .dog-mouth-omega{display:none}.mood-worried .dog-mouth-worried,.mood-worried .dog-sweat{display:block}.mood-worried .dog-brow{stroke:#815348}.mood-happy .dog-tongue{display:block}.mood-happy .dog-cheek{opacity:.75}.mood-brave .dog-brow{stroke:#356286}.mood-curious .dog-mouth-omega{transform:scale(.82);transform-origin:center}
+    .dog-accessory{fill:var(--accessory-fill,#ffd45b);stroke:var(--navy);stroke-width:1.6;stroke-linejoin:round}.dog-accessory-brim{fill:var(--accessory-brim,#f2a928);stroke:var(--navy);stroke-width:1.5;stroke-linejoin:round}.badge-pink .dog-accessory{--accessory-fill:#ffbfd6;--accessory-brim:#f58bb2}.badge-blue .dog-accessory{--accessory-fill:#8bdcff;--accessory-brim:#2b83c4}.badge-red .dog-accessory{--accessory-fill:#ff9a8a;--accessory-brim:#e84d47}.goggle-strap,.headset-band{fill:none;stroke:var(--navy);stroke-width:1.8;stroke-linecap:round}.goggle-lens{fill:#b7edffcc;stroke:var(--navy);stroke-width:1.4}.dog-bandana{fill:#f7a6c0;stroke:var(--navy);stroke-width:1.5;stroke-linejoin:round}.dog-bandana-knot,.dog-bow{fill:#ffd6e4;stroke:var(--navy);stroke-width:1.5;stroke-linejoin:round}.dog-bow-knot{fill:#ffc800;stroke:var(--navy);stroke-width:1}.helmet-mark{fill:#fff4b5;stroke:var(--navy);stroke-width:.8}.rescue-mark{fill:#fff2a6;stroke:var(--navy);stroke-width:1}.rescue-cross{fill:none;stroke:var(--red);stroke-width:1.4;stroke-linecap:round}.headset-band{stroke:#ffc800;stroke-width:3}.headset-earcup{fill:#ffc800;stroke:var(--navy);stroke-width:1.4}.headset-mic{fill:none;stroke:var(--navy);stroke-width:1.6;stroke-linecap:round}.headset-mic-dot{fill:var(--red);stroke:#fff;stroke-width:.8}
+    .issue-card:hover .mascot-dog{animation:chibi-tilt .36s ease-in-out}.issue-card:hover .dog-ear-left{animation:ear-wiggle .42s ease-in-out}.issue-card:hover .dog-ear-right{animation:ear-wiggle .42s ease-in-out .06s}.issue-card:hover .dog-eye-white,.issue-card:hover .dog-eye{transform-box:fill-box;transform-origin:center;animation:chibi-blink .18s ease-in-out}.issue-card.bounce .mascot-dog{animation:chibi-tilt .46s ease-in-out}
+    @keyframes chibi-tilt{0%,100%{rotate:0deg}35%{rotate:-5deg}70%{rotate:4deg}}@keyframes ear-wiggle{0%,100%{rotate:0deg}45%{rotate:-8deg}75%{rotate:5deg}}@keyframes chibi-blink{0%,100%{scale:1 1}45%{scale:1 .12}}
+    @media(max-width:700px){.badge{width:66px;height:66px;flex-basis:66px}.badge svg,.badge .mascot-dog{width:60px;height:60px}}
+    @media(max-width:390px){.badge{width:64px;height:64px;flex-basis:64px}.badge svg,.badge .mascot-dog{width:60px;height:60px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.issue-card:hover:not(.selected),.issue-card.selected{transform:none}.support-fab:after{animation:none}}
+  
+    #bgm-toggle{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:52px;height:52px;display:grid;place-items:center;border:3px solid var(--navy);border-radius:50%;background:linear-gradient(#fff08a,#ffc800);box-shadow:0 5px 0 var(--navy),inset 0 3px 0 #ffffffa0;font-size:24px;line-height:1;cursor:pointer;transition:transform .15s,box-shadow .15s}
+    #bgm-toggle:hover{transform:translateY(-2px)}#bgm-toggle:active{transform:translateY(4px);box-shadow:0 1px 0 var(--navy)}
+    #bgm-toggle.playing{animation:bgmBob 1.2s ease-in-out infinite}@keyframes bgmBob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+    @media (prefers-reduced-motion:reduce){#bgm-toggle.playing{animation:none}}
   </style>
 </head>
 <body>
 <header class="topbar">
   <a class="brand" href="#top" aria-label="SOS Wheel trang chủ"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 72"><path fill="#ffc800" stroke="#0d2b68" stroke-width="3" d="M32 3 58 13v23c0 15-10 25-26 33C16 61 6 51 6 36V13L32 3Z"/><path fill="#0a69c7" stroke="#fff" stroke-width="2" d="M32 9 52 17v19c0 12-8 20-20 27C20 56 12 48 12 36V17l20-8Z"/><path fill="#ffc800" d="m32 17 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1 4-9Z"/><circle cx="32" cy="36" r="7" fill="#e52521" stroke="#fff" stroke-width="2"/></svg></span><span>SOS<span class="brand-light"> Wheel</span><small>ROAD ASSISTANCE · 24/7</small></span></a>
-  <div class="top-actions"><span class="live-pill"><i></i> Đang hoạt động</span><button class="header-link" id="help-link">Trợ giúp <span aria-hidden="true">↗</span></button></div>
+  <div class="top-actions"><span class="live-pill"><i></i> Đang hoạt động</span><button class="sound-toggle" id="sound-toggle" type="button" aria-label="Tắt âm thanh" aria-pressed="true" title="Bật hoặc tắt âm puppy"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="speaker-shape" d="M4 9v6h4l5 4V5L8 9H4Z"/><path class="speaker-wave" d="M16 9a5 5 0 0 1 0 6m2-9a8 8 0 0 1 0 12"/><path class="speaker-muted" d="m16 9 5 6m0-6-5 6"/></svg><span id="sound-label">Âm bật</span></button><button class="header-link" id="help-link">Trợ giúp <span aria-hidden="true">↗</span></button></div>
 </header>
 <main class="shell" id="top">
   <section class="main-column">
@@ -61,7 +127,7 @@
     <p class="fast-note">Thời gian phản hồi phụ thuộc tình trạng thợ khả dụng trong khu vực.</p>
     <div class="welcome"><div class="tower" aria-hidden="true"><span class="tower-window">🐾</span><span class="tower-base"></span></div><div class="welcome-copy"><small>TRUNG TÂM ĐIỀU PHỐI</small><strong>Biệt đội cún SOS xuất phát!</strong><span>Cùng bạn vượt qua mọi sự cố trên đường.</span></div><span class="welcome-paw" aria-hidden="true">🐾</span></div>
     <div class="location-box glass"><span class="loc-icon" aria-hidden="true">⌖</span><div class="loc-copy"><strong id="location-title">Chưa bật định vị</strong><small id="location-subtitle">Cho phép vị trí để tìm thợ gần nhất</small></div><div class="loc-actions"><button class="loc-btn" id="locate">Bật định vị</button><button class="demo-btn" id="demo-location">Vị trí demo</button></div></div>
-    <section class="section"><div class="section-head"><div><span class="section-index">01 / SỰ CỐ</span><h2>Xe của bạn đang gặp gì?</h2></div><button class="quiet-btn" id="wizard-start">Chẩn đoán nhanh ↗</button></div>
+    <section class="section"><div class="section-head"><div><span class="section-index">01 / SỰ CỐ</span><h2>Xe của bạn đang gặp vấn đề gì?</h2></div><button class="quiet-btn diagnostic-pill" id="wizard-start" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Chẩn đoán nhanh</span></button></div>
       <div class="issue-grid" id="issue-list"></div>
       <div class="wizard hidden" id="wizard"><div class="wizard-top"><span>CHẨN ĐOÁN NHANH · <b id="wizard-step">1 / 2</b></span><button class="quiet-btn" id="wizard-close">Đóng ×</button></div><h3 id="wizard-question"></h3><div class="answer-row"><button class="answer-btn" data-answer="yes">Có</button><button class="answer-btn" data-answer="no">Không</button><button class="answer-btn" data-answer="unsure">Không chắc</button></div></div>
     </section>
@@ -74,7 +140,7 @@
   </aside>
 </main>
 <aside class="support" aria-label="Trợ lý hỗ trợ SOS"><div class="support-tooltip" id="tooltip">Gâu! Cần trợ giúp gấp? Bấm vào đây!<small>Trợ lý Cún SOS 24/7 🐾</small></div><section class="support-panel hidden" id="support-panel" role="dialog" aria-labelledby="support-title"><header class="support-head"><span>🐾</span><strong id="support-title">Trợ lý Cún SOS</strong><button class="icon-close" id="support-close" aria-label="Đóng">×</button></header><div class="support-body"><p class="bubble">Gâu gâu! Mình là Trợ lý Cứu hộ SOS. Bạn cần liên hệ Hotline 1900-XXXX hay gửi hỗ trợ trực tiếp?</p><div class="support-actions" id="support-actions"><a class="support-action call" href="tel:1900XXXX"><span>☎</span><span>Gọi ngay<small>Hotline 1900-XXXX</small></span><span>→</span></a><button class="support-action chat" id="chat-open"><span>✉</span><span>Chat hỗ trợ<small>Nhận gợi ý chọn sự cố</small></span><span>→</span></button></div><div class="chat-box hidden" id="chat-box"><div class="messages" id="messages" aria-live="polite"><p class="message">Mình có thể hướng dẫn nhanh. Xe bạn đang gặp vấn đề gì?</p></div><form id="chat-form" class="chat-form"><input id="chat-input" placeholder="Mô tả sự cố..." maxlength="240" required><button aria-label="Gửi">↑</button></form><small class="chat-note">Trợ lý demo tự động · Không kết nối nhân viên trực tuyến</small></div></div></section>
-  <button class="support-fab" id="support-fab" aria-label="Mở Trợ lý Cún SOS" aria-expanded="false"><svg class="support-dog" viewBox="0 0 100 100" role="img" aria-label="Mascot chó cứu hộ SOS đeo headset"><path d="M28 37Q13 25 17 51q3 15 17 14m32-28q15-12 11 14-3 15-17 14" fill="#86502f" stroke="#0d2b68" stroke-width="3"/><path d="M27 41q0-28 23-28t23 28v18q0 25-23 29-23-4-23-29Z" fill="#f3c88e" stroke="#0d2b68" stroke-width="3"/><path d="M25 38q1-29 25-29t25 29H63q-4-13-13-13T37 38Z" fill="#e52521" stroke="#0d2b68" stroke-width="2.5"/><path d="M22 47V39q0-31 28-31t28 31v8" fill="none" stroke="#ffc800" stroke-width="5"/><rect x="17" y="43" width="13" height="22" rx="6" fill="#ffc800" stroke="#0d2b68" stroke-width="2.5"/><rect x="70" y="43" width="13" height="22" rx="6" fill="#ffc800" stroke="#0d2b68" stroke-width="2.5"/><ellipse cx="50" cy="62" rx="18" ry="13" fill="#fff5e7"/><circle cx="41" cy="48" r="3" fill="#172b45"/><circle cx="59" cy="48" r="3" fill="#172b45"/><path d="M45 57q5-6 10 0-1 6-5 6t-5-6Zm5 6v4m0 0q-5 5-9 0m9 0q5 5 9 0" fill="none" stroke="#273348" stroke-width="2" stroke-linecap="round"/><path d="M77 63q1 15-14 15h-7" fill="none" stroke="#0d2b68" stroke-width="3"/><circle cx="55" cy="78" r="4" fill="#e52521" stroke="#fff" stroke-width="2"/><path d="m38 82 12 7 12-7-3 13H41Z" fill="#e83581" stroke="#0d2b68" stroke-width="2"/></svg><i></i></button>
+  <button class="support-fab" id="support-fab" aria-label="Mở Trợ lý Cún SOS" aria-expanded="false"><svg class="support-dog mood-happy" viewBox="0 0 100 100" role="img" aria-label="Mascot chó cứu hộ SOS đeo headset"><path class="support-ear support-ear-left" d="M28 37Q13 25 17 51q3 15 17 14Z" fill="#86502f" stroke="#0d2b68" stroke-width="3"/><path class="support-ear support-ear-right" d="M66 37q15-12 11 14-3 15-17 14Z" fill="#86502f" stroke="#0d2b68" stroke-width="3"/><path d="M27 41q0-28 23-28t23 28v18q0 25-23 29-23-4-23-29Z" fill="#f3c88e" stroke="#0d2b68" stroke-width="3"/><path d="M25 38q1-29 25-29t25 29H63q-4-13-13-13T37 38Z" fill="#e52521" stroke="#0d2b68" stroke-width="2.5"/><path d="M22 47V39q0-31 28-31t28 31v8" fill="none" stroke="#ffc800" stroke-width="5"/><rect x="17" y="43" width="13" height="22" rx="6" fill="#ffc800" stroke="#0d2b68" stroke-width="2.5"/><rect x="70" y="43" width="13" height="22" rx="6" fill="#ffc800" stroke="#0d2b68" stroke-width="2.5"/><ellipse class="support-cheek" cx="35" cy="62" rx="6" ry="3.5"/><ellipse class="support-cheek" cx="65" cy="62" rx="6" ry="3.5"/><ellipse cx="50" cy="62" rx="18" ry="13" fill="#fff5e7"/><ellipse cx="41" cy="48" rx="5" ry="6" fill="#fff"/><ellipse cx="59" cy="48" rx="5" ry="6" fill="#fff"/><circle class="support-eye" cx="41" cy="49" r="3" fill="#172b45"/><circle class="support-eye" cx="59" cy="49" r="3" fill="#172b45"/><circle cx="39.8" cy="47.6" r="1.5" fill="#fff"/><circle cx="57.8" cy="47.6" r="1.5" fill="#fff"/><path d="M45 57q5-6 10 0-1 6-5 6t-5-6Z" fill="#273348"/><path d="M43 65q7 8 14 0" fill="none" stroke="#273348" stroke-width="2" stroke-linecap="round"/><path class="support-tongue" d="M46 68q4 2 8 0v5q-4 4-8 0Z" fill="#f05c79" stroke="#bb314f" stroke-width="1"/><path d="M77 63q1 15-14 15h-7" fill="none" stroke="#0d2b68" stroke-width="3"/><circle cx="55" cy="78" r="4" fill="#e52521" stroke="#fff" stroke-width="2"/><path d="m38 82 12 7 12-7-3 13H41Z" fill="#e83581" stroke="#0d2b68" stroke-width="2"/></svg><i></i></button>
 </aside>
 <div class="modal-backdrop hidden" id="request-modal"><form class="modal" id="request-form"><button class="close-modal" type="button" data-close>×</button><span class="section-index">XÁC NHẬN CỨU HỘ · DEMO</span><h2>Thợ sẵn sàng lên đường.</h2><p id="request-detail"></p><label>Số điện thoại liên hệ<input name="phone" type="tel" placeholder="09xx xxx xxx" minlength="8" required></label><p>Đây là bản demo tĩnh. Yêu cầu chỉ được lưu trong phiên trình duyệt này.</p><button class="primary-btn" type="submit">Gửi yêu cầu demo →</button></form></div>
 <div class="toast" id="toast" role="status"></div>
@@ -82,11 +148,11 @@
 <script>
 (() => {
   const services = [
-    {code:'fuel',title:'Hết xăng',detail:'Tiếp nhiên liệu tận nơi',group:'Xăng',min:30000,max:50000,cls:'badge-pink',badge:'ZIPPY'},
-    {code:'tire_patch',title:'Thủng lốp',detail:'Vá hoặc thay ruột',group:'Lốp',min:40000,max:70000,cls:'badge-green',badge:'NHANH NHẸN'},
-    {code:'battery_jump',title:'Hết bình',detail:'Kích hoặc thay bình',group:'Bình điện',min:50000,max:100000,cls:'badge-blue',badge:'ĐIỆN LỰC'},
-    {code:'chain_adjust',title:'Xích / truyền động',detail:'Chỉnh xích, kiểm tra cơ khí',group:'Xích',min:30000,max:80000,cls:'badge-yellow',badge:'THỢ GIỎI'},
-    {code:'diagnose',title:'Chưa rõ nguyên nhân',detail:'Kiểm tra và chẩn đoán',group:'Chưa rõ',min:30000,max:80000,cls:'badge-red',badge:'ĐỘI TRƯỞNG'}
+    {code:'fuel',title:'Hết xăng',detail:'Tiếp nhiên liệu tận nơi',group:'Xăng',min:30000,max:50000,cls:'badge-pink',mood:'worried',accessory:'pilot'},
+    {code:'tire_patch',title:'Thủng lốp',detail:'Vá hoặc thay ruột',group:'Lốp',min:40000,max:70000,cls:'badge-green',mood:'happy',accessory:'bandana'},
+    {code:'battery_jump',title:'Hết bình',detail:'Kích hoặc thay bình',group:'Bình điện',min:50000,max:100000,cls:'badge-blue',mood:'brave',accessory:'helmet'},
+    {code:'chain_adjust',title:'Xích / truyền động',detail:'Chỉnh xích, kiểm tra cơ khí',group:'Xích',min:30000,max:80000,cls:'badge-yellow',mood:'confident',accessory:'bow'},
+    {code:'diagnose',title:'Chưa rõ nguyên nhân',detail:'Kiểm tra và chẩn đoán',group:'Chưa rõ',min:30000,max:80000,cls:'badge-red',mood:'curious',accessory:'rescue'}
   ];
   const mechanics = [
     {id:1,name:'Minh Phát',phone:'0900000001',lat:21.0285,lng:105.8542,available:true},
@@ -96,15 +162,34 @@
   ];
   const demoPosition={lat:21.0285,lng:105.8542};
   const settings={base:15000,freeKm:2,perKm:5000,factor:1.3,radiusKm:200,fuelPrice:25000,fuelLiters:2};
-  const state={position:null,selected:null,nearby:[],map:null,customerMarker:null,markers:[],order:null,wizardStep:0,wizardAnswers:[],rating:0};
+  const state={position:null,selected:null,nearby:[],map:null,customerMarker:null,markers:[],order:null,wizardStep:0,wizardAnswers:[],rating:0,soundEnabled:true,audioContext:null};
   const $=(selector,root=document)=>root.querySelector(selector);
   const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
   const fmt=value=>new Intl.NumberFormat('vi-VN').format(Math.round(value))+'đ';
   const escapeHtml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function toast(text){const node=$('#toast');node.textContent=text;node.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>node.classList.remove('show'),3000)}
-  function dogSvg(){return '<svg viewBox="0 0 64 64" aria-hidden="true"><path class="dog-ear" d="M14 20 6 10q-3 19 9 25m35-15 8-10q3 19-9 25"/><path class="dog-face" d="M13 25q0-18 19-18t19 18v13q0 17-19 20-19-3-19-20Z"/><ellipse class="dog-muzzle" cx="32" cy="39" rx="13" ry="9"/><circle class="dog-eye" cx="23" cy="29" r="2.6"/><circle class="dog-eye" cx="41" cy="29" r="2.6"/><path class="dog-nose" d="M28 36q4-5 8 0-1 5-4 5t-4-5Z"/><path class="dog-smile" d="M32 41v3m0 0q-4 4-7 0m7 0q4 4 7 0"/></svg>'}
+  function playPuppy(type='yip'){
+    if(!state.soundEnabled)return;
+    const AudioContextClass=window.AudioContext||window.webkitAudioContext;if(!AudioContextClass)return;
+    try{
+      state.audioContext??=new AudioContextClass();const context=state.audioContext;if(context.state==='suspended')context.resume();
+      const patterns={yip:[{delay:0,start:820,peak:1180,end:690,duration:.105}],bark:[{delay:0,start:620,peak:930,end:570,duration:.17}],happy:[{delay:0,start:820,peak:1110,end:760,duration:.11},{delay:.13,start:920,peak:1210,end:830,duration:.11},{delay:.27,start:1020,peak:1280,end:900,duration:.13}]};
+      (patterns[type]||patterns.yip).forEach(tone=>{const at=context.currentTime+tone.delay,oscillator=context.createOscillator(),filter=context.createBiquadFilter(),gain=context.createGain();oscillator.type=type==='bark'?'sawtooth':'triangle';oscillator.frequency.setValueAtTime(tone.start,at);oscillator.frequency.exponentialRampToValueAtTime(tone.peak,at+tone.duration*.28);oscillator.frequency.exponentialRampToValueAtTime(tone.end,at+tone.duration);filter.type='bandpass';filter.frequency.setValueAtTime(1550,at);filter.Q.setValueAtTime(1.15,at);gain.gain.setValueAtTime(.0001,at);gain.gain.exponentialRampToValueAtTime(.085,at+.009);gain.gain.exponentialRampToValueAtTime(.0001,at+tone.duration);oscillator.connect(filter);filter.connect(gain);gain.connect(context.destination);oscillator.start(at);oscillator.stop(at+tone.duration+.01)});
+    }catch(error){console.debug('Puppy sound unavailable',error)}
+  }
+  function dogSvg(mood='happy',accessory='none',extraClass=''){
+    const accessorySvg={
+      pilot:'<path class="dog-accessory cap-pink" d="M13 23Q15 9 32 8q17 1 19 15l-5 2H18Z"/><path class="dog-accessory-brim" d="M11 23h42q-2 5-21 5t-21-5Z"/><path class="goggle-strap" d="M13 27h38"/><circle class="goggle-lens" cx="23" cy="26" r="4"/><circle class="goggle-lens" cx="41" cy="26" r="4"/>',
+      bandana:'<path class="dog-bandana" d="M12 22q20 8 40 0l-2 6q-18 7-36 0Z"/><path class="dog-bandana-knot" d="m47 26 7 2-5 6-4-4Z"/>',
+      helmet:'<path class="dog-accessory helmet-blue" d="M11 25Q12 7 32 6q20 1 21 19H11Z"/><path class="dog-accessory-brim" d="M9 23h46q-2 6-23 6T9 23Z"/><path class="helmet-mark" d="m32 10 1.8 3.5 4 .5-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.5Z"/>',
+      bow:'<path class="dog-bow" d="M39 17q-11-11-13-1 1 7 13 5 12 2 13-5-2-10-13 1Z"/><circle class="dog-bow-knot" cx="39" cy="19" r="3"/>',
+      rescue:'<path class="dog-accessory helmet-red" d="M13 24Q15 8 32 7q17 1 19 18l-5 2H18Z"/><path class="dog-accessory-brim" d="M10 24h44q-2 5-22 5T10 24Z"/><circle class="rescue-mark" cx="32" cy="16" r="4"/><path class="rescue-cross" d="M32 13v6m-3-3h6"/>',
+      headset:'<path class="headset-band" d="M10 35v-7Q11 7 32 7t22 21v7"/><rect class="headset-earcup" x="7" y="30" width="10" height="16" rx="5"/><rect class="headset-earcup" x="47" y="30" width="10" height="16" rx="5"/><path class="headset-mic" d="M52 44q0 9-10 9h-4"/><circle class="headset-mic-dot" cx="38" cy="53" r="2.5"/>'
+    }[accessory]||'';
+    return `<svg class="mascot-dog mood-${mood} ${extraClass}" viewBox="0 0 64 64" role="img" aria-label="Chó cứu hộ ${mood}"><path class="dog-ear dog-ear-left" d="M17 20Q8 10 5 17q-2 12 10 17l5-5Z"/><path class="dog-ear-inner" d="M14 20q-4-5-5-2 0 6 7 10Z"/><path class="dog-ear dog-ear-right" d="M47 20q9-10 12-3 2 12-10 17l-5-5Z"/><path class="dog-ear-inner" d="M50 20q4-5 5-2 0 6-7 10Z"/><path class="dog-face" d="M9 31Q8 9 32 7q24 2 23 24 0 23-23 27Q9 54 9 31Z"/>${accessorySvg}<path class="dog-brow brow-left" d="m17 30 9-2"/><path class="dog-brow brow-right" d="m38 28 9 2"/><ellipse class="dog-cheek" cx="16" cy="40" rx="4.5" ry="3"/><ellipse class="dog-cheek" cx="48" cy="40" rx="4.5" ry="3"/><ellipse class="dog-eye-white" cx="22" cy="34" rx="7" ry="8"/><ellipse class="dog-eye-white" cx="42" cy="34" rx="7" ry="8"/><circle class="dog-eye" cx="23" cy="35" r="4.8"/><circle class="dog-eye" cx="41" cy="35" r="4.8"/><circle class="dog-highlight" cx="21" cy="32.5" r="2.1"/><circle class="dog-highlight small-highlight" cx="25.3" cy="37.3" r="1.05"/><circle class="dog-highlight" cx="39" cy="32.5" r="2.1"/><circle class="dog-highlight small-highlight" cx="43.3" cy="37.3" r="1.05"/><ellipse class="dog-muzzle" cx="32" cy="45" rx="11" ry="7.5"/><circle class="dog-nose" cx="32" cy="42" r="2.4"/><circle class="dog-nose-highlight" cx="31.2" cy="41.2" r=".9"/><path class="dog-mouth-omega" d="M26 47q1 5 4 2 2-2 2-3 0 1 2 3 3 3 4-2"/><path class="dog-tongue" d="M29 51q3 1 6 0v3q-3 4-6 0Z"/><path class="dog-mouth-worried" d="M27 50q5-7 10 0"/><path class="dog-sweat" d="M52 20q-4 5 0 7 4-2 0-7Z"/></svg>`
+  }
   function renderServices(){
-    $('#issue-list').innerHTML=services.map(service=>`<button class="issue-card" data-code="${service.code}"><span class="badge ${service.cls}" style="--dog:${service.cls==='badge-green'?'#39a65a':service.cls==='badge-blue'?'#1477d6':service.cls==='badge-yellow'?'#e5a400':service.cls==='badge-red'?'#e52521':'#e83581'}">${dogSvg()}<small>${service.badge}</small></span><span class="badge-copy"><strong>${service.title}</strong><small>${service.detail}</small></span></button>`).join('');
+    $('#issue-list').innerHTML=services.map(service=>`<button class="issue-card" data-code="${service.code}"><span class="badge ${service.cls}" style="--dog:${service.cls==='badge-green'?'#39a65a':service.cls==='badge-blue'?'#1477d6':service.cls==='badge-yellow'?'#e5a400':service.cls==='badge-red'?'#e52521':'#e83581'}">${dogSvg(service.mood,service.accessory)}</span><span class="badge-copy"><strong>${service.title}</strong><small>${service.detail}</small></span></button>`).join('');
     $$('.issue-card').forEach(button=>button.addEventListener('click',()=>selectService(button.dataset.code)));
   }
   function initMap(){
@@ -154,7 +239,7 @@
   }
   function openRequest(id){if(!state.position)return toast('Hãy bật GPS hoặc chọn vị trí demo trước.');if(!state.selected)return toast('Chọn nhóm sự cố trước nhé.');const mechanic=state.nearby.find(m=>m.id===id);if(!mechanic)return toast('Thợ demo hiện không khả dụng.');state.pendingMechanic=mechanic;$('#request-detail').textContent=`${mechanic.name} · cách bạn ${mechanic.distance.toFixed(2)} km. Nhập số điện thoại để gửi yêu cầu demo.`;$('#request-modal').classList.remove('hidden')}
   function startFastTrack(){if(!state.selected)selectService('diagnose');if(!state.position){useDemoLocation();return}if(!state.nearby.length)loadNearby();const closest=state.nearby[0];if(closest)openRequest(closest.id);else toast('Chưa có thợ demo sẵn sàng gần bạn.')}
-  function showOrder(mechanic,phone){const id=`SOS-DEMO-${String(Date.now()).slice(-6)}`;state.order={id,mechanic,phone,status:'accepted'};$('#order-card').classList.remove('hidden');$('#order-status').textContent='Thợ đã nhận đơn';$('#order-id').textContent=id;$('#moving').classList.remove('hidden');$('#order-info').innerHTML=`${escapeHtml(mechanic.name)} đang nhận yêu cầu demo.<br>Số liên hệ khách: ${escapeHtml(phone)}<br>Khoảng cách: ${mechanic.distance.toFixed(2)} km`;$('[data-close]')?.click();toast('Đã tạo yêu cầu demo!');if(state.map){state.map.setView([state.position.lat,state.position.lng],14)}}
+  function showOrder(mechanic,phone){const id=`SOS-DEMO-${String(Date.now()).slice(-6)}`;state.order={id,mechanic,phone,status:'accepted'};$('#order-card').classList.remove('hidden');$('#order-status').textContent='Thợ đã nhận đơn';$('#order-id').textContent=id;$('#moving').classList.remove('hidden');$('.moving-mascot').innerHTML=dogSvg('happy','rescue');playPuppy('happy');$('#order-info').innerHTML=`${escapeHtml(mechanic.name)} đang nhận yêu cầu demo.<br>Số liên hệ khách: ${escapeHtml(phone)}<br>Khoảng cách: ${mechanic.distance.toFixed(2)} km`;$('[data-close]')?.click();toast('Đã tạo yêu cầu demo!');if(state.map){state.map.setView([state.position.lat,state.position.lng],14)}}
   function startWizard(){state.wizardStep=0;state.wizardAnswers=[];$('#wizard').classList.remove('hidden');showQuestion();$('#wizard').scrollIntoView({behavior:'smooth',block:'nearest'})}
   const questions=['Xe đề không nổ hoặc đèn đồng hồ yếu?','Bánh xe bị xẹp hoặc xe khó lăn?'];function showQuestion(){$('#wizard-question').textContent=questions[state.wizardStep];$('#wizard-step').textContent=`${state.wizardStep+1} / 2`}
   function answerWizard(answer){state.wizardAnswers.push(answer);if(state.wizardStep===0&&answer==='yes')return recommend('battery_jump');if(state.wizardStep===1)return recommend(state.wizardAnswers[0]==='no'&&answer==='yes'?'tire_patch':'diagnose');state.wizardStep=1;showQuestion()}
@@ -166,12 +251,68 @@
   function closeSupport(){$('#support-panel').classList.add('hidden');$('#support-fab').setAttribute('aria-expanded','false');$('#tooltip').classList.remove('hidden')}
   function renderReview(){const node=$('#review');node.classList.remove('hidden');node.innerHTML='<strong style="font-size:10px">Đánh giá trải nghiệm demo</strong><div class="stars">'+[1,2,3,4,5].map(i=>`<button type="button" data-star="${i}">★</button>`).join('')+'</div><textarea placeholder="Chia sẻ trải nghiệm" aria-label="Đánh giá"></textarea><button class="primary-btn" id="send-review">Gửi đánh giá demo</button>';$$('[data-star]').forEach(btn=>btn.onclick=()=>{state.rating=Number(btn.dataset.star);$$('[data-star]').forEach(star=>star.classList.toggle('on',Number(star.dataset.star)<=state.rating))});$('#send-review').onclick=()=>{if(!state.rating)return toast('Hãy chọn số sao trước nhé.');node.innerHTML='<b style="color:#287b32">Cảm ơn bạn đã đánh giá bản demo!</b>'}}
   function bind(){
+    const soundToggle=$('#sound-toggle');soundToggle.onclick=()=>{state.soundEnabled=!state.soundEnabled;soundToggle.setAttribute('aria-pressed',String(state.soundEnabled));soundToggle.setAttribute('aria-label',state.soundEnabled?'Tắt âm thanh':'Bật âm thanh');soundToggle.title=state.soundEnabled?'Tắt âm puppy':'Bật âm puppy';$('#sound-label').textContent=state.soundEnabled?'Âm bật':'Âm tắt'};document.addEventListener('click',event=>{if(!state.soundEnabled||event.target.closest('#sound-toggle'))return;if(event.target.closest('.issue-card'))return playPuppy('yip');if(event.target.closest('#request-form'))return;if(event.target.closest('.fast-track,.loc-btn,.demo-btn,.diagnostic-pill,.answer-btn,.call-btn,.primary-btn,.support-action,.support-fab,.share-btn,.fuel-link'))playPuppy('bark')});
     $('#locate').onclick=requestLocation;$('#demo-location').onclick=useDemoLocation;$('#fast-track').onclick=startFastTrack;$('#wizard-start').onclick=startWizard;$('#wizard-close').onclick=()=>$('#wizard').classList.add('hidden');$$('[data-answer]').forEach(btn=>btn.onclick=()=>answerWizard(btn.dataset.answer));$('#fuel-search').onclick=findFuel;
     $('#request-form').onsubmit=event=>{event.preventDefault();if(!state.pendingMechanic)return;const phone=new FormData(event.currentTarget).get('phone');showOrder(state.pendingMechanic,phone);event.currentTarget.reset()};$$('[data-close]').forEach(btn=>btn.onclick=()=>$('#request-modal').classList.add('hidden'));$('#request-modal').onclick=event=>{if(event.target.id==='request-modal')event.currentTarget.classList.add('hidden')};
     $('#support-fab').onclick=()=>{const panel=$('#support-panel');const open=panel.classList.contains('hidden');panel.classList.toggle('hidden',!open);$('#support-fab').setAttribute('aria-expanded',String(open));$('#tooltip').classList.toggle('hidden',open)};$('#support-close').onclick=closeSupport;$('#chat-open').onclick=()=>{$('#support-actions').classList.add('hidden');$('#chat-box').classList.remove('hidden');$('#chat-input').focus()};$('#chat-form').onsubmit=event=>{event.preventDefault();const input=$('#chat-input'),text=input.value.trim();if(!text)return;addMessage(text,'user');input.value='';setTimeout(()=>chatReply(text),180)};document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeSupport();$('#request-modal').classList.add('hidden')}});$('#help-link').onclick=()=>{$('#support-panel').classList.remove('hidden');$('#support-fab').setAttribute('aria-expanded','true');$('#tooltip').classList.add('hidden')};$('#share-order').onclick=shareOrder;
   }
-  renderServices();initMap();bind();useDemoLocation();
+  renderServices();initMap();bind();$('#support-fab .support-dog').outerHTML=dogSvg('happy','headset','support-dog');useDemoLocation();
   setTimeout(()=>$('#tooltip').classList.add('hidden'),8000);
+})();
+</script>
+<!-- Nhạc nền -->
+<audio id="bgm" src="nhac-nen.mp3" loop autoplay muted playsinline preload="auto"></audio>
+<button id="bgm-toggle" type="button" aria-label="Tắt nhạc nền" title="Bật/tắt nhạc nền">🎶</button>
+<script>
+(function(){
+  const bgm=document.getElementById('bgm'),btn=document.getElementById('bgm-toggle');
+  const VOL=0.25;
+  let userPaused=false;
+  bgm.volume=VOL;
+
+  function setUI(){
+    const on=!bgm.paused&&!bgm.muted;
+    btn.textContent=on?'🎶':'🔇';
+    btn.classList.toggle('playing',on);
+    btn.setAttribute('aria-label',on?'Tắt nhạc nền':'Bật nhạc nền');
+  }
+
+  // Cố gắng phát ngay khi tải trang. Phát ở chế độ im lặng thì trình duyệt luôn cho phép.
+  function kick(){
+    if(userPaused)return;
+    const p=bgm.play();
+    if(p&&p.catch)p.catch(()=>{});
+    setUI();
+  }
+
+  // Bật tiếng ngay khi người dùng tương tác lần đầu (cách duy nhất trình duyệt cho phép có tiếng)
+  function unmute(ev){
+    if(userPaused)return;
+    if(ev&&ev.target&&ev.target.closest&&ev.target.closest('#bgm-toggle'))return;
+    bgm.muted=false;
+    bgm.volume=VOL;
+    const p=bgm.play();
+    const done=()=>{setUI();if(!bgm.paused&&!bgm.muted){['pointerdown','touchstart','touchend','click','keydown','mousemove'].forEach(e=>window.removeEventListener(e,unmute,true))}};
+    if(p&&p.then)p.then(done).catch(()=>{bgm.muted=true;setUI()});else done();
+  }
+  ['pointerdown','touchstart','touchend','click','keydown','mousemove'].forEach(e=>window.addEventListener(e,unmute,{capture:true,passive:true}));
+
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    if(!bgm.paused&&!bgm.muted){userPaused=true;bgm.pause()}
+    else{userPaused=false;bgm.muted=false;bgm.volume=VOL;bgm.play().catch(()=>{})}
+    setUI();
+  },true);
+
+  ['play','pause','volumechange'].forEach(e=>bgm.addEventListener(e,setUI));
+
+  // Quay lại tab thì tự phát tiếp; nếu bị hệ thống tạm dừng thì phát lại
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)kick()});
+  bgm.addEventListener('pause',()=>{if(!userPaused&&!document.hidden)setTimeout(kick,300)});
+  bgm.addEventListener('ended',kick);
+
+  kick();
+  window.addEventListener('load',kick);
 })();
 </script>
 </body>
